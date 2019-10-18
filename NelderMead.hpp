@@ -1,3 +1,7 @@
+/* Copyright (c) 2019 Evgeniy Vodolazskiy (waterlaz)  */
+
+#pragma once
+
 #include <set>
 #include <vector>
 #include <assert.h>
