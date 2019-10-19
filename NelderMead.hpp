@@ -12,10 +12,11 @@ private:
     class CompareFirst {
     public:
         int operator()(const std::pair<R, D>& a, 
-                       const std::pair<R, D>& b){
+                       const std::pair<R, D>& b) const {
             return a.first < b.first;
         }
     };
+public:
     std::multiset<std::pair<R, D>, CompareFirst > xs;
 public:
     virtual R f(const D& x) = 0;
@@ -37,7 +38,7 @@ public:
     }
     void addToSimplex(const D& x){
         xs.insert(std::pair<R, D>( f(x), x) );
-        n = xs.size();
+        n = xs.size()-1;
     }
     void iterate(){
         assert( !xs.empty() );
@@ -94,5 +95,6 @@ public:
             ys.insert(std::pair<R, D>(f(x), x));
             it++;
         }
+        xs = ys;
     }
 };
